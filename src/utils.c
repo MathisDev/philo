@@ -24,3 +24,25 @@ long	elapsed(long start)
 {
 	return (find_ms() - start);
 }
+
+int	join_threads(t_setting *set)
+{
+	int	i;
+
+	i = 0;
+	while (i < set->num_p)
+	{
+		if (pthread_join(set->philo[i].thread, NULL) != 0)
+			return (1);
+		i++;
+	}
+	return (1);
+}
+
+void	print_lock(char *str, int id, t_setting *set, long ms)
+{
+	pthread_mutex_lock(&set->status);
+	if (!set->end)
+		printf("%ld Philosopher %i %s\n", ms, id, str);
+	pthread_mutex_unlock(&set->status);
+}

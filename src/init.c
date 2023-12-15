@@ -38,6 +38,17 @@ int	parse_arg(int argc, char **argv, t_setting *set)
 	return (1);
 }
 
+int	create_philo(t_setting *set, int i)
+{
+	set->philo[i].id = i;
+	set->philo[i].time_last_meal = find_ms();
+	set->philo[i].set = set;
+	set->philo[i].c_meals = set->num_e;
+	if (pthread_create(&set->philo[i].thread, NULL, &life, &set->philo[i]))
+		return (1);
+	return (0);
+}
+
 int	init_philo_and_forks(t_setting *set)
 {
 	int	i;

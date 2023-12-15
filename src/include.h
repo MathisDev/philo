@@ -50,8 +50,15 @@ int	malloc_philo_and_forks(t_setting *set);
 void	free_philo_and_forks(t_setting *set);
 void	monitoring_wrapper(t_setting *set);
 void	monitoring(t_setting *set);
+int		check_end(t_setting *set);
+void	change_end(t_setting *set);
 long	find_ms(void);
 long	elapsed(long start);
 long	read_m_t(t_philo *philo);
 void	set_m_t(t_philo *philo);
-
+void	ft_sleep(int time);
+int		determine_r_fork(t_philo *philo);
+int		ft_eat(t_philo *philo);
+void	*life(void *tmp);
+int	join_threads(t_setting *tools);
+void	print_lock(char *str, int id, t_setting *tools, long ms);
