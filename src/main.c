@@ -9,8 +9,7 @@
 /*   Updated: 2023/12/14 22:55:28 by mamottet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-# include "include.h"
+#include "include.h"
 
 int	main(int argc, char **argv)
 {
@@ -33,4 +32,5 @@ int	main(int argc, char **argv)
 	}
 	monitoring_wrapper(&set);
 	join_threads(&set);
+	free_philo_and_forks(&set);
 }

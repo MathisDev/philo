@@ -10,22 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdio.h>
-# include <pthread.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdbool.h>
-# include <sys/time.h>
-# include <stddef.h>
-
+#include <stdio.h>
+#include <pthread.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdbool.h>
+#include <sys/time.h>
+#include <stddef.h>
 
 typedef struct s_philo
 {
-	int				id;
-	pthread_t		thread;
-	long			time_last_meal;
-	int				c_meals;
+	int					id;
+	pthread_t			thread;
+	long				time_last_meal;
+	int					c_meals;
 	struct s_setting	*set;
+	pthread_mutex_t		meal_mutex;
 }	t_philo;
 
 typedef struct s_setting
@@ -43,10 +43,10 @@ typedef struct s_setting
 	int				num_e;
 }	t_setting;
 
-int	parse_arg(int argc, char **argv, t_setting *set);
-int	ft_atoi(const char *str, int *ret);
-int	init_philo_and_forks(t_setting *set);
-int	malloc_philo_and_forks(t_setting *set);
+int		parse_arg(int argc, char **argv, t_setting *set);
+int		ft_atoi(const char *str, int *ret);
+int		init_philo_and_forks(t_setting *set);
+int		malloc_philo_and_forks(t_setting *set);
 void	free_philo_and_forks(t_setting *set);
 void	monitoring_wrapper(t_setting *set);
 void	monitoring(t_setting *set);
@@ -60,5 +60,5 @@ void	ft_sleep(int time);
 int		determine_r_fork(t_philo *philo);
 int		ft_eat(t_philo *philo);
 void	*life(void *tmp);
-int	join_threads(t_setting *tools);
+int		join_threads(t_setting *tools);
 void	print_lock(char *str, int id, t_setting *tools, long ms);

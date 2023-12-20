@@ -9,9 +9,7 @@
 /*   Updated: 2023/12/14 23:14:47 by mamottet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-# include "include.h"
-
+#include "include.h"
 
 void	free_philo_and_forks(t_setting *set)
 {

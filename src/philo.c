@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "include.h"
+#include "include.h"
 
 void	ft_sleep(int time)
 {
@@ -40,18 +40,20 @@ int	ft_eat(t_philo *philo)
 
 	r_fork = determine_r_fork(philo);
 	pthread_mutex_lock(&philo->set->forks[r_fork]);
-	print_lock("has picked up a fork", philo->id, philo->set,
+	print_lock("take a fork", philo->id, philo->set,
 		elapsed(philo->set->start_time));
 	pthread_mutex_lock(&philo->set->forks[philo->id]);
-	print_lock("has picked up a fork", philo->id, philo->set,
+	print_lock("take a fork", philo->id, philo->set,
 		elapsed(philo->set->start_time));
 	set_m_t(philo);
+	pthread_mutex_lock(&philo->meal_mutex);
 	philo->c_meals--;
+	pthread_mutex_unlock(&philo->meal_mutex);
 	print_lock("is eating ", philo->id, philo->set,
 		elapsed(philo->set->start_time));
 	ft_sleep(philo->set->time_e);
-	pthread_mutex_unlock(&philo->set->forks[r_fork]);
 	pthread_mutex_unlock(&philo->set->forks[philo->id]);
+	pthread_mutex_unlock(&philo->set->forks[r_fork]);
 	return (1);
 }
 

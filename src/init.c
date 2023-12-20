@@ -9,8 +9,7 @@
 /*   Updated: 2023/12/14 23:09:57 by mamottet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-# include "include.h"
+#include "include.h"
 
 int	parse_arg(int argc, char **argv, t_setting *set)
 {
@@ -44,6 +43,8 @@ int	create_philo(t_setting *set, int i)
 	set->philo[i].time_last_meal = find_ms();
 	set->philo[i].set = set;
 	set->philo[i].c_meals = set->num_e;
+	if (pthread_mutex_init(&set->philo[i].meal_mutex, NULL))
+		return (1);
 	if (pthread_create(&set->philo[i].thread, NULL, &life, &set->philo[i]))
 		return (1);
 	return (0);

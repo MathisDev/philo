@@ -9,8 +9,7 @@
 /*   Updated: 2023/12/14 23:26:46 by mamottet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-# include "include.h"
+#include "include.h"
 
 long	read_m_t(t_philo *philo)
 {
@@ -28,4 +27,3 @@ void	set_m_t(t_philo *philo)
 	philo->time_last_meal = find_ms();
 	pthread_mutex_unlock(&philo->set->meal_time);
 }
-

@@ -9,8 +9,7 @@
 /*   Updated: 2023/12/14 23:40:00 by mamottet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-# include "include.h"
+#include "include.h"
 
 int	ft_isdigit(int c)
 {

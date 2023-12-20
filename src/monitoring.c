@@ -9,8 +9,7 @@
 /*   Updated: 2023/12/14 23:21:47 by mamottet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-# include "include.h"
+#include "include.h"
 
 void	monitoring_wrapper(t_setting *set)
 {
@@ -19,7 +18,6 @@ void	monitoring_wrapper(t_setting *set)
 		monitoring(set);
 		usleep(1000);
 	}
-	free_philo_and_forks(set);
 }
 
 void	monitoring(t_setting *set)
@@ -34,9 +32,11 @@ void	monitoring(t_setting *set)
 		if (set->time_d < diff_meal)
 		{
 			change_end(set);
+			pthread_mutex_lock(&set->philo[i].meal_mutex);
 			if (set->philo[i].c_meals != 0)
 				printf("%ld Philosopher %d has died \n",
 					elapsed(set->start_time), set->philo[i].id);
+			pthread_mutex_unlock(&set->philo[i].meal_mutex);
 			return ;
 		}
 		i++;
