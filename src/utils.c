@@ -31,10 +31,12 @@ int	join_threads(t_setting *set)
 	i = 0;
 	while (i < set->num_p)
 	{
+		printf("join thread | [number %d]\n",i);
 		if (pthread_join(set->philo[i].thread, NULL) != 0)
 			return (1);
 		i++;
 	}
+	printf("exit to joint thread \n");
 	return (1);
 }
 

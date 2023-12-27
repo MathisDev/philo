@@ -30,7 +30,7 @@ src		= 	./src/aloc.c \
 
 all:
 	$(cc) $(fl) $(link) $(src) -o $(exe)
-test:
+debug: fclean
 	$(cc) $(fl) $(link_check) $(src) -o $(exe_check)
 clean_mac:
 	rm -fr philo_check.dSYM

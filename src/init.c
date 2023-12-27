@@ -68,6 +68,7 @@ int	init_philo_and_forks(t_setting *set)
 	i = 0;
 	while (i < set->num_p)
 	{
+		printf("create thread | [number %d] \n",i);
 		if (create_philo(set, i))
 		{
 			free_philo_and_forks(set);
