@@ -32,6 +32,9 @@ all:
 	$(cc) $(fl) $(link) $(src) -o $(exe)
 test:
 	$(cc) $(fl) $(link_check) $(src) -o $(exe_check)
+clean_mac:
+	rm -fr philo_check.dSYM
+	rm -fr $(exe) $(exe_check)
 clean:
 	echo "Il n'y a rien a clean"
 fclean:
